@@ -2,9 +2,12 @@ package com.example.hsbo_sq_demo.controller.v1;
 
 import com.example.hsbo_sq_demo.model.Message;
 import com.example.hsbo_sq_demo.service.MessageService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -17,8 +20,16 @@ public class MessageController {
     }
 
     @PostMapping
-    public Message createMessage(@RequestBody Message message) {
-        return this.messageService.createMessage(message);
+    public ResponseEntity<Message> createMessage(@RequestBody Message message) {
+        Message savedMessage = messageService.createMessage(message);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedMessage.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).body(savedMessage);
     }
 
     @GetMapping("/{id}")
