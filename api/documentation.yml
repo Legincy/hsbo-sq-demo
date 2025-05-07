@@ -1,0 +1,39 @@
+openapi: '3.0.0'
+info:
+  title: Referat-API 
+  version: '1.0'
+servers:
+  - url: localhost
+paths:
+  /api/v1/messages:
+    post:
+        responses:
+          '200':
+            description: OK
+      
+    get:
+        responses:
+          '200':
+            description: OK
+
+  /api/v1/messages/{id}:
+    get:
+      responses:
+        '200':
+          description: OK
+
+    put:
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      responses:
+        '200':
+          description: OK
+
+  /api/v1/messages/search:
+      get:
+        responses:
+          '200':
+            description: OK
