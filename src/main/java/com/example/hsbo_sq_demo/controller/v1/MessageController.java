@@ -33,7 +33,7 @@ public class MessageController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Message> getMessageById(@PathVariable Long id) {
+    public ResponseEntity<Message> getMessageById(@PathVariable("id") Long id) {
         Message message = this.messageService.getMessageById(id);
 
         return ResponseEntity.ok(message);
@@ -47,21 +47,21 @@ public class MessageController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Message>> getMessagesByContent(@RequestParam String content) {
+    public ResponseEntity<List<Message>> getMessagesByContent(@RequestParam("content") String content) {
         List<Message> messages = this.messageService.getMessagesByContent(content);
 
         return ResponseEntity.ok(messages);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Message> updateMessage(@PathVariable Long id, @RequestBody Message message) {
+    public ResponseEntity<Message> updateMessage(@PathVariable("id") Long id, @RequestBody Message message) {
         Message updatedMessage = this.messageService.updateMessage(id, message);
 
         return ResponseEntity.ok(updatedMessage);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMessage(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteMessage(@PathVariable("id") Long id) {
         this.messageService.deleteMessage(id);
 
         return ResponseEntity.ok(null);
