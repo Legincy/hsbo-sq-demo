@@ -1,6 +1,7 @@
 package com.example.hsbo_sq_demo.service;
 
 import com.example.hsbo_sq_demo.model.Message;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

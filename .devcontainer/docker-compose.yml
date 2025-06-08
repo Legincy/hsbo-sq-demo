@@ -19,3 +19,27 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  influxdb:
+    image: influxdb:latest
+    container_name: hsbo-sq-demo-influx
+    env_file:
+      - .env
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./data/influx/data:/var/lib/influxdb2
+      - ./data/influx/config:/etc/influxdb2
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: hsbo-sq-demo-grafana
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    depends_on:
+    - influxdb
