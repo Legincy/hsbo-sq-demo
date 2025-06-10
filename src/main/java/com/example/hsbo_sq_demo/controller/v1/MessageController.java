@@ -38,7 +38,7 @@ public class MessageController {
         Message message = this.messageService.getMessageById(id);
 
         return ResponseEntity.ok(message);
-    }*/
+    }*/ 
 
     @GetMapping
     public ResponseEntity<List<Message>> getAllMessages() {
