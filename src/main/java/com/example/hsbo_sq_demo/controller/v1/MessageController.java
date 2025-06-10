@@ -32,7 +32,7 @@ public class MessageController {
         return ResponseEntity.created(location).body(savedMessage);
     }
 
-    /**
+    /*
     @GetMapping("/{id}")
     public ResponseEntity<Message> getMessageById(@PathVariable("id") Long id) {
         Message message = this.messageService.getMessageById(id);
